@@ -5,18 +5,18 @@
   
 
   
-  <title>linux系统最大文件数ulimit修改方法 | Hexo</title>
+  <title>Effective Java 中文版（第二版）读书笔记 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="linux系统最大文件数ulimit修改方法 1、登陆到root用户 2、ulimit -n 65535 3、修改配置文件vim /etc/security/limits.conf添加  12*  soft  nofile  65535*  hard nofile 65535  最大数不能超过65535  4、退出用户后ulimit -n查看生如果要普通用户也生效需要修改其他配置文件  123vi">
+  <meta name="description" content="Effective Java 中文版（第二版）读书笔记第2章 创建和销毁对象2.1 考虑用静态工厂方法替代构造器静态工厂方法的格式形如： 123public static TypeX getInsane()&amp;#123;    return new TypeX();&amp;#125; 静态工厂方法的优点：  他们有名字，客户端代码更容易阅读； 不必在每次调用时都创建一个新对象； 可以返回原返回类型的任何子">
 <meta property="og:type" content="article">
-<meta property="og:title" content="linux系统最大文件数ulimit修改方法">
+<meta property="og:title" content="Effective Java 中文版（第二版）读书笔记">
 <meta property="og:url" content="http://yoursite.com/2017/12/18/linux系统最大文件数ulimit修改方法/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="linux系统最大文件数ulimit修改方法 1、登陆到root用户 2、ulimit -n 65535 3、修改配置文件vim /etc/security/limits.conf添加  12*  soft  nofile  65535*  hard nofile 65535  最大数不能超过65535  4、退出用户后ulimit -n查看生如果要普通用户也生效需要修改其他配置文件  123vi">
-<meta property="og:updated_time" content="2017-12-18T03:46:46.539Z">
+<meta property="og:description" content="Effective Java 中文版（第二版）读书笔记第2章 创建和销毁对象2.1 考虑用静态工厂方法替代构造器静态工厂方法的格式形如： 123public static TypeX getInsane()&amp;#123;    return new TypeX();&amp;#125; 静态工厂方法的优点：  他们有名字，客户端代码更容易阅读； 不必在每次调用时都创建一个新对象； 可以返回原返回类型的任何子">
+<meta property="og:updated_time" content="2017-12-18T07:24:59.191Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="linux系统最大文件数ulimit修改方法">
-<meta name="twitter:description" content="linux系统最大文件数ulimit修改方法 1、登陆到root用户 2、ulimit -n 65535 3、修改配置文件vim /etc/security/limits.conf添加  12*  soft  nofile  65535*  hard nofile 65535  最大数不能超过65535  4、退出用户后ulimit -n查看生如果要普通用户也生效需要修改其他配置文件  123vi">
+<meta name="twitter:title" content="Effective Java 中文版（第二版）读书笔记">
+<meta name="twitter:description" content="Effective Java 中文版（第二版）读书笔记第2章 创建和销毁对象2.1 考虑用静态工厂方法替代构造器静态工厂方法的格式形如： 123public static TypeX getInsane()&amp;#123;    return new TypeX();&amp;#125; 静态工厂方法的优点：  他们有名字，客户端代码更容易阅读； 不必在每次调用时都创建一个新对象； 可以返回原返回类型的任何子">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -77,7 +77,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      linux系统最大文件数ulimit修改方法
+      Effective Java 中文版（第二版）读书笔记
     </h1>
   
 
@@ -85,21 +85,51 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="linux系统最大文件数ulimit修改方法"><a href="#linux系统最大文件数ulimit修改方法" class="headerlink" title="linux系统最大文件数ulimit修改方法"></a>linux系统最大文件数ulimit修改方法</h1><ul>
-<li>1、登陆到root用户</li>
-<li>2、ulimit -n 65535</li>
-<li>3、修改配置文件<br>vim /etc/security/limits.conf<br>添加</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">*  soft  nofile  65535</span><br><span class="line">*  hard nofile 65535</span><br></pre></td></tr></table></figure>
-<p> 最大数不能超过65535</p>
+        <h1 id="Effective-Java-中文版（第二版）读书笔记"><a href="#Effective-Java-中文版（第二版）读书笔记" class="headerlink" title="Effective Java 中文版（第二版）读书笔记"></a>Effective Java 中文版（第二版）读书笔记</h1><h2 id="第2章-创建和销毁对象"><a href="#第2章-创建和销毁对象" class="headerlink" title="第2章 创建和销毁对象"></a>第2章 创建和销毁对象</h2><h3 id="2-1-考虑用静态工厂方法替代构造器"><a href="#2-1-考虑用静态工厂方法替代构造器" class="headerlink" title="2.1 考虑用静态工厂方法替代构造器"></a>2.1 考虑用静态工厂方法替代构造器</h3><p>静态工厂方法的格式形如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public static TypeX getInsane()&#123;</span><br><span class="line">    return new TypeX();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>静态工厂方法的优点：</p>
 <ul>
-<li>4、退出用户后ulimit -n查看生<br>如果要普通用户也生效需要修改其他配置文件</li>
+<li>他们有名字，客户端代码更容易阅读；</li>
+<li>不必在每次调用时都创建一个新对象；</li>
+<li>可以返回原返回类型的任何子类型的对象；</li>
+<li>创检参数化实例的时候，代码更加简洁；</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/ssh/sshd_config</span><br><span class="line">去掉 UsePAM yes 前面的注释</span><br><span class="line">重启ssh即可。</span><br></pre></td></tr></table></figure>
+<p>静态工厂方法的缺点：</p>
+<ul>
+<li>类如果不含有共有的或者受保护的构造器，就不能被子类化；</li>
+<li>静态工程方法和其他静态方法没有任何区别，给调用者带来一定困惑；</li>
+<li></li>
+</ul>
+<h3 id="2-2-遇到多个构造器参数时要考虑用构建器"><a href="#2-2-遇到多个构造器参数时要考虑用构建器" class="headerlink" title="2.2 遇到多个构造器参数时要考虑用构建器"></a>2.2 遇到多个构造器参数时要考虑用构建器</h3><p>构造对象是可以采用重叠构造器模式或者JavaBeans模式，但是在可变参数比较多的时候，采用构建器能够使代码更易于阅读和编写，也比JavaBeans更加安全。</p>
+<p>重叠构造器模式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public Class A&#123;</span><br><span class="line">    private int X;</span><br><span class="line">    private int Y;</span><br><span class="line">    </span><br><span class="line">    public A()&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public A(int x)&#123;</span><br><span class="line">        X=x;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public A(int x,int y)&#123;</span><br><span class="line">        X=x;</span><br><span class="line">        Y=y;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>JavaBeans模式,主要特点是采用大量的SetXX函数初始化对象属性：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public class A&#123;</span><br><span class="line">    private int X;</span><br><span class="line">    private int Y;</span><br><span class="line">    </span><br><span class="line">    public A()&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public setX(int x)&#123;</span><br><span class="line">        this.X=x;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public setY(int y)&#123;</span><br><span class="line">        this.Y=y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>构建器Builder模式，主要思路是让客户端利用所有必要的参数调用构造器(或者静态工厂方法)，得到一个Builder对象，然后再Builder对象上面调用类似于setter的方法，来设置每个相关的可选参数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">public class A&#123;</span><br><span class="line">    private int X; //必须初始化</span><br><span class="line">    private int Y; //可选初始化</span><br><span class="line">    </span><br><span class="line">    public static class Builder&#123;</span><br><span class="line">        private int XX;</span><br><span class="line">        private int YY;</span><br><span class="line">        </span><br><span class="line">        pulic Bilder(int x)&#123;</span><br><span class="line">            this.XX=x;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        public Builder SetY(int y)&#123;</span><br><span class="line">            this.YY=y</span><br><span class="line">        &#125;</span><br><span class="line">        public A build(()&#123;</span><br><span class="line">            return new A(this);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    private A(Builder builder)&#123;</span><br><span class="line">        X=builser.XX;</span><br><span class="line">        Y=builder.YY;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>客户端可以采用这种方式来调用Builder模式,这样就可以按需初始化非必要属性：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A a=new A.Builder(X).SetY(y).build();</span><br></pre></td></tr></table></figure>
+<h3 id="2-3-用私有构造函数或者枚举类型强化Singleton属性"><a href="#2-3-用私有构造函数或者枚举类型强化Singleton属性" class="headerlink" title="2.3 用私有构造函数或者枚举类型强化Singleton属性"></a>2.3 用私有构造函数或者枚举类型强化Singleton属性</h3><p>Singleton单例模式实现的第一种方式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public class Singleton&#123;</span><br><span class="line">    public static final Singleton INSTANCE=new Singleton();</span><br><span class="line">    </span><br><span class="line">    public Singleton()&#123;&#125;</span><br><span class="line">    </span><br><span class="line">    public void function()&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Singleton单例模式实现的第二种方式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class Singleton&#123;</span><br><span class="line">    private static final Singleton INSTANCE=new Singleton();</span><br><span class="line">    </span><br><span class="line">    public Singleton()&#123;&#125;</span><br><span class="line">    </span><br><span class="line">    public sttatic Singleton getInstance()&#123;</span><br><span class="line">        return INSTANCE;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public void function()&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面两种方法都是采用私有构造函数，然后导出公有的静态成员，其中第一种方法里面公有静态成员成员是个final域，第二种方法里面公有成员是一个静态成员方法。</p>
+<p>上面两种Singleton的序列化需要实现“Implements Serislizable”，并且要申明所有实例域都是瞬时(transient)的。并提供一个readResolve方法。否则每次反序列化一个序列化的实例时，都会创建一个新的实例，修改后的例子如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">private Object readResolve（）&#123;</span><br><span class="line">    //Return the one true Singleton and let the garbage collector</span><br><span class="line">    //take care of the Singleton impersonator</span><br><span class="line">    return INSTANCE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Singleton单例模式实现的第三种方式,单元素枚举方式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//Enum singleton-the preferred approach</span><br><span class="line">public enum Singleton&#123;</span><br><span class="line"></span><br><span class="line">    INSTANCE;</span><br><span class="line">    </span><br><span class="line">    public void function()&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-4-通过私有构造器强化不可实例化的能力"><a href="#2-4-通过私有构造器强化不可实例化的能力" class="headerlink" title="2.4 通过私有构造器强化不可实例化的能力"></a>2.4 通过私有构造器强化不可实例化的能力</h3><h3 id="2-5-避免创建不必要的对象"><a href="#2-5-避免创建不必要的对象" class="headerlink" title="2.5 避免创建不必要的对象"></a>2.5 避免创建不必要的对象</h3><h3 id="2-6-消除过期的对象引用"><a href="#2-6-消除过期的对象引用" class="headerlink" title="2.6 消除过期的对象引用"></a>2.6 消除过期的对象引用</h3><p>Java出现内存泄露的三种场景：</p>
+<ul>
+<li>类自己管理内存</li>
+<li>缓存</li>
+<li>监听器或者其他回调</li>
+</ul>
+<p>其中第二三种情况可以考虑弱引用（WeakHashMap等）来解决；</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/18/linux系统最大文件数ulimit修改方法/" data-id="cjbbnth830001vsug6305u5l6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/18/linux系统最大文件数ulimit修改方法/" data-id="cjbbvlxa00002moughbg3qtbh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -107,6 +137,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2017/12/18/Effective Java 中文版（第二版）读书笔记/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          linux系统最大文件数ulimit修改方法
+        
+      </div>
+    </a>
   
   
     <a href="/2017/12/15/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
@@ -148,7 +187,11 @@
       <ul>
         
           <li>
-            <a href="/2017/12/18/linux系统最大文件数ulimit修改方法/">linux系统最大文件数ulimit修改方法</a>
+            <a href="/2017/12/18/Effective Java 中文版（第二版）读书笔记/">linux系统最大文件数ulimit修改方法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/18/linux系统最大文件数ulimit修改方法/">Effective Java 中文版（第二版）读书笔记</a>
           </li>
         
           <li>

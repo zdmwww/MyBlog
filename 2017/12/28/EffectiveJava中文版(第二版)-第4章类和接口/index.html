@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Effective Java 中文版（第二版）第4章 类和接口 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="第4章 类和接口4.1 使类和成员的可访问性最小化4.2 在公有类中使用访问方法而非公有域4.3 使可变性最小化4.4 复合优先于继承4.5 要么为继承而设计并提供文档说明，要么就禁止继承4.6 接口优于抽象类4.7 接口只用于定义类型4.8 类层次优先于标签类4.9 用函数对象表示策略函数指针的主要作用就是实现策略（Strategy）模式，为了在Java中实现这种事，要申明一个接口来表示该策略，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Effective Java 中文版（第二版）第4章 类和接口">
+<meta property="og:url" content="http://yoursite.com/2017/12/28/EffectiveJava中文版(第二版)-第4章类和接口/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="第4章 类和接口4.1 使类和成员的可访问性最小化4.2 在公有类中使用访问方法而非公有域4.3 使可变性最小化4.4 复合优先于继承4.5 要么为继承而设计并提供文档说明，要么就禁止继承4.6 接口优于抽象类4.7 接口只用于定义类型4.8 类层次优先于标签类4.9 用函数对象表示策略函数指针的主要作用就是实现策略（Strategy）模式，为了在Java中实现这种事，要申明一个接口来表示该策略，">
+<meta property="og:updated_time" content="2017-12-28T02:04:11.645Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Effective Java 中文版（第二版）第4章 类和接口">
+<meta name="twitter:description" content="第4章 类和接口4.1 使类和成员的可访问性最小化4.2 在公有类中使用访问方法而非公有域4.3 使可变性最小化4.4 复合优先于继承4.5 要么为继承而设计并提供文档说明，要么就禁止继承4.6 接口优于抽象类4.7 接口只用于定义类型4.8 类层次优先于标签类4.9 用函数对象表示策略函数指针的主要作用就是实现策略（Strategy）模式，为了在Java中实现这种事，要申明一个接口来表示该策略，">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-EffectiveJava中文版(第二版)-第4章类和接口" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/28/EffectiveJava中文版(第二版)-第4章类和接口/" class="article-date">
+  <time datetime="2017-12-28T02:01:51.790Z" itemprop="datePublished">2017-12-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Effective Java 中文版（第二版）第4章 类和接口
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="第4章-类和接口"><a href="#第4章-类和接口" class="headerlink" title="第4章 类和接口"></a>第4章 类和接口</h2><h3 id="4-1-使类和成员的可访问性最小化"><a href="#4-1-使类和成员的可访问性最小化" class="headerlink" title="4.1 使类和成员的可访问性最小化"></a>4.1 使类和成员的可访问性最小化</h3><h3 id="4-2-在公有类中使用访问方法而非公有域"><a href="#4-2-在公有类中使用访问方法而非公有域" class="headerlink" title="4.2 在公有类中使用访问方法而非公有域"></a>4.2 在公有类中使用访问方法而非公有域</h3><h3 id="4-3-使可变性最小化"><a href="#4-3-使可变性最小化" class="headerlink" title="4.3 使可变性最小化"></a>4.3 使可变性最小化</h3><h3 id="4-4-复合优先于继承"><a href="#4-4-复合优先于继承" class="headerlink" title="4.4 复合优先于继承"></a>4.4 复合优先于继承</h3><h3 id="4-5-要么为继承而设计并提供文档说明，要么就禁止继承"><a href="#4-5-要么为继承而设计并提供文档说明，要么就禁止继承" class="headerlink" title="4.5 要么为继承而设计并提供文档说明，要么就禁止继承"></a>4.5 要么为继承而设计并提供文档说明，要么就禁止继承</h3><h3 id="4-6-接口优于抽象类"><a href="#4-6-接口优于抽象类" class="headerlink" title="4.6 接口优于抽象类"></a>4.6 接口优于抽象类</h3><h3 id="4-7-接口只用于定义类型"><a href="#4-7-接口只用于定义类型" class="headerlink" title="4.7 接口只用于定义类型"></a>4.7 接口只用于定义类型</h3><h3 id="4-8-类层次优先于标签类"><a href="#4-8-类层次优先于标签类" class="headerlink" title="4.8 类层次优先于标签类"></a>4.8 类层次优先于标签类</h3><h3 id="4-9-用函数对象表示策略"><a href="#4-9-用函数对象表示策略" class="headerlink" title="4.9 用函数对象表示策略"></a>4.9 用函数对象表示策略</h3><p>函数指针的主要作用就是实现策略（Strategy）模式，为了在Java中实现这种事，要申明一个接口来表示该策略，并且为每个具体策略申明一个实现了该接口的类。当一个具体策略只被使用一次时，通常使用匿名类来申明和实例化这个具体策略类。当一个具体策略是被设计用来重复使用的，它的类通常就要被实现为私有的静态成员类，并通过公有的静态final域被导出，其类型为该策略接口。</p>
+<h3 id="4-10-优先考虑静态成员类"><a href="#4-10-优先考虑静态成员类" class="headerlink" title="4.10 优先考虑静态成员类"></a>4.10 优先考虑静态成员类</h3><p>嵌套类主要包含四种：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">静态成员类、非静态成员类、匿名类和局部类</span><br></pre></td></tr></table></figure>
+<p>静态成员类的一种常见用法就是作为提供有的辅助类，仅当与它的外部类一起使用时才有意义。</p>
+<p>非静态成员类的一种常见用法是定义一个Adapter,它允许外部类的实例被看做是另一个不相关的的类的实例。</p>
+<p>私有静态成员类的一种常见用法是用来代表外围类所代表的对象的组件。</p>
+<p>匿名类的三种常见用法：</p>
+<ul>
+<li>动态创建函数对象，比如匿名Comparator实例；</li>
+<li>创建过程对象对象，不如Runable、Thread和TimeTask实例；</li>
+<li>用在静态工厂方法的内部</li>
+</ul>
+<p>四种嵌套类，如果一个嵌套类需要在单个方法之外任然是可见的，或者它太长了不适合放在方法内部，就应该使用成员类。如果成员类的每个实例都需要一个指向其外围实例的引用，就要把成员类当做非静态的，否则就做成静态的。假设这个嵌套类属于一个方法的内部，如果只需要在一个地方创建实例并且已经有了一个预置的类型可以说明这个类的特征，就把它做成内部类，否则就选择局部类。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/12/28/EffectiveJava中文版(第二版)-第4章类和接口/" data-id="cjbpv71r900021gugrxddw50d" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/12/28/EffectiveJava中文版(第二版)-第11章序列化/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Effective Java 中文版（第二版）第11章 序列化
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/12/28/EffectiveJava中文版(第二版)-第5章泛型/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Effective Java 中文版（第二版）第5章 泛型</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/12/28/EffectiveJava中文版(第二版)-第11章序列化/">Effective Java 中文版（第二版）第11章 序列化</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/28/EffectiveJava中文版(第二版)-第4章类和接口/">Effective Java 中文版（第二版）第4章 类和接口</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/28/EffectiveJava中文版(第二版)-第5章泛型/">Effective Java 中文版（第二版）第5章 泛型</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/28/EffectiveJava中文版(第二版)-第6章枚举和注解/">Effective Java 中文版（第二版）第6章 枚举和注解</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/28/EffectiveJava中文版(第二版)-第7章方法/">Effective Java 中文版（第二版）第7章 方法</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 YuMing<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

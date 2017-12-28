@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Effective Java 中文版（第二版）第6章 枚举和注解 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="第6章 枚举和注解6.1 用enum代替int常量特定与常量的方法实现可以与特定于常量的数据结合起来。枚举类型有一个自动产生的valueOf(String)方法，它将常量的名字转换成常量本身。如果在枚举类型中覆盖toString()，要考虑一个编写一个fromString方法，将定制的字符串表示法变回相应的枚举。下面是一个比较标准和完整的例子： 12345678910111213141516171">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Effective Java 中文版（第二版）第6章 枚举和注解">
+<meta property="og:url" content="http://yoursite.com/2017/12/28/EffectiveJava中文版(第二版)-第6章枚举和注解/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="第6章 枚举和注解6.1 用enum代替int常量特定与常量的方法实现可以与特定于常量的数据结合起来。枚举类型有一个自动产生的valueOf(String)方法，它将常量的名字转换成常量本身。如果在枚举类型中覆盖toString()，要考虑一个编写一个fromString方法，将定制的字符串表示法变回相应的枚举。下面是一个比较标准和完整的例子： 12345678910111213141516171">
+<meta property="og:updated_time" content="2017-12-28T02:09:56.729Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Effective Java 中文版（第二版）第6章 枚举和注解">
+<meta name="twitter:description" content="第6章 枚举和注解6.1 用enum代替int常量特定与常量的方法实现可以与特定于常量的数据结合起来。枚举类型有一个自动产生的valueOf(String)方法，它将常量的名字转换成常量本身。如果在枚举类型中覆盖toString()，要考虑一个编写一个fromString方法，将定制的字符串表示法变回相应的枚举。下面是一个比较标准和完整的例子： 12345678910111213141516171">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-EffectiveJava中文版(第二版)-第6章枚举和注解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/28/EffectiveJava中文版(第二版)-第6章枚举和注解/" class="article-date">
+  <time datetime="2017-12-28T02:01:51.381Z" itemprop="datePublished">2017-12-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Effective Java 中文版（第二版）第6章 枚举和注解
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="第6章-枚举和注解"><a href="#第6章-枚举和注解" class="headerlink" title="第6章 枚举和注解"></a>第6章 枚举和注解</h2><h3 id="6-1-用enum代替int常量"><a href="#6-1-用enum代替int常量" class="headerlink" title="6.1 用enum代替int常量"></a>6.1 用enum代替int常量</h3><p>特定与常量的方法实现可以与特定于常量的数据结合起来。<br>枚举类型有一个自动产生的valueOf(String)方法，它将常量的名字转换成常量本身。如果在枚举类型中覆盖toString()，要考虑一个编写一个fromString方法，将定制的字符串表示法变回相应的枚举。下面是一个比较标准和完整的例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">//Enum type with constant-specific class bodies and data</span><br><span class="line">public enum Operation&#123;</span><br><span class="line">    PLUS(&quot;+&quot;)&#123;</span><br><span class="line">        double apply(double x,double y) &#123; return x + y ;&#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    MINUS(&quot;-&quot;)&#123;</span><br><span class="line">        double apply(double x,double y) &#123; return x - y ;&#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    TIMES(&quot;*&quot;)&#123;</span><br><span class="line">        double apply(double x,double y) &#123; return x * y ;&#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    DIVIDE(&quot;/&quot;)&#123;</span><br><span class="line">        double apply(double x,double y) &#123; return x / y ;&#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    private final symbol;</span><br><span class="line">    </span><br><span class="line">    Operation(String symbol) &#123; this.symbol = symbol ;&#125;</span><br><span class="line">    </span><br><span class="line">    @Override public String toString() &#123; return symbol ;&#125;</span><br><span class="line">    </span><br><span class="line">    abstract double apply(double x,double y);</span><br><span class="line">    </span><br><span class="line">    //Implementing a fromString method on an  enum type</span><br><span class="line">    private static final Map&lt;String,operation&gt; strEnumMap= new HashMap();</span><br><span class="line">    </span><br><span class="line">    //Initialize map from constant name to enum constant</span><br><span class="line">    static &#123;</span><br><span class="line">        for(Operation op : values())&#123;</span><br><span class="line">            strEnumMap.put(op.toString(),op);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //Returns Operation for string,or null if string is invalid</span><br><span class="line">    public static Operation fromString(String symbol)&#123;</span><br><span class="line">        return strEnumMap.get(symbol);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>策略枚举可以进一步简化switch语句和特定于常量的方法实现。做法是采用内部枚举类实现策略。然后采内部策略枚举类初始化外部枚举类常量即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//The strategy enum pattern</span><br><span class="line">enum PayrollDay&#123;</span><br><span class="line">    MONDAY(PayType.WEEKDAY),SATURDAY(PayType.WEEKEND);</span><br><span class="line">    //The strategy enum type</span><br><span class="line">    private enum PayType&#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="6-2-用实例域代替序数"><a href="#6-2-用实例域代替序数" class="headerlink" title="6.2 用实例域代替序数"></a>6.2 用实例域代替序数</h3><p>尽量避免使用ordinal()函数。</p>
+<h3 id="6-3-用EnumSet代替位域"><a href="#6-3-用EnumSet代替位域" class="headerlink" title="6.3 用EnumSet代替位域"></a>6.3 用EnumSet代替位域</h3><p>考虑使用EnumSet。</p>
+<h3 id="6-3-用EnumMap代替序数索引"><a href="#6-3-用EnumMap代替序数索引" class="headerlink" title="6.3 用EnumMap代替序数索引"></a>6.3 用EnumMap代替序数索引</h3><p>多维关系可以考虑采用EnumMap&lt;…,EnumMap&lt;…&gt;&gt;来实现。</p>
+<h3 id="6-4-用接口模拟可伸缩的枚举"><a href="#6-4-用接口模拟可伸缩的枚举" class="headerlink" title="6.4 用接口模拟可伸缩的枚举"></a>6.4 用接口模拟可伸缩的枚举</h3><p>无法编写可扩展的枚举类型，但是可以通过编写接口以及实现该接口来达到这种效果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public interface Operation &#123;</span><br><span class="line">    double apply(double x,double y);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public enum BasicOperation implements Operation&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public enum ExtendedOperation implements Operation&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>首先，不仅可以在任何需要基本枚举的地方单独传递一个扩展枚举的实例，除了基本类型的元素外，还可以传递完整的扩展枚举类型，并使用它的元素：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">private static &lt;T extends Enum&lt;T&gt; &amp; Operation&gt; void test(</span><br><span class="line">Class&lt;T&gt; opSet, double x,double y) &#123;</span><br><span class="line">    for(Operation op:opSet.getEnumConstants())&#123;</span><br><span class="line">        System.out.println(op.apply(x,y));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static void main(String[] args)&#123;</span><br><span class="line">    double x=Double.parseDouble(args[0]);</span><br><span class="line">    double y=Double.parseDouble(args[1]);</span><br><span class="line">    test(ExtendOperation.class,x,y);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>另外，可以采用有限制通配符（Collection&lt;? Extends Operation&gt;）来调用扩展枚举类型：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">private static void test(Collection&lt;? Extends Operation&gt; opSet, double x,double y) &#123;</span><br><span class="line">    for(Operation op:opSet)&#123;</span><br><span class="line">        System.out.println(op.apply(x,y));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static void main(String[] args)&#123;</span><br><span class="line">    double x=Double.parseDouble(args[0]);</span><br><span class="line">    double y=Double.parseDouble(args[1]);</span><br><span class="line">    test(Arrays.asList(ExtendOperation.values()),x,y);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="6-5-注解优先于命名模式"><a href="#6-5-注解优先于命名模式" class="headerlink" title="6.5 注解优先于命名模式"></a>6.5 注解优先于命名模式</h3><p>注解需要配合解析解析注释的工具才能使用。注解可以有返回值，形如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@Retention(RetentionPolicy.RUNTIME)</span><br><span class="line">@Target(ElementType.METHOD)</span><br><span class="line">public @interface ExceptionTest&#123;</span><br><span class="line">    Class&lt;? extends Exception&gt; value();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="6-6-坚持使用Override注解"><a href="#6-6-坚持使用Override注解" class="headerlink" title="6.6 坚持使用Override注解"></a>6.6 坚持使用Override注解</h3><h3 id="6-7-用标记接口定义类型"><a href="#6-7-用标记接口定义类型" class="headerlink" title="6.7 用标记接口定义类型"></a>6.7 用标记接口定义类型</h3><p>标记接口比标记注解的优势：</p>
+<ul>
+<li>1、标记接口定义的类型是由被标记类的实例实现的；标记注解则没有定义这样的类型；</li>
+<li>2、他们可以更加精确的被锁定；</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/12/28/EffectiveJava中文版(第二版)-第6章枚举和注解/" data-id="cjbpv71r900061guguynft8yh" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/12/28/EffectiveJava中文版(第二版)-第5章泛型/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Effective Java 中文版（第二版）第5章 泛型
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/12/28/EffectiveJava中文版(第二版)-第7章方法/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Effective Java 中文版（第二版）第7章 方法</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/12/28/EffectiveJava中文版(第二版)-第11章序列化/">Effective Java 中文版（第二版）第11章 序列化</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/28/EffectiveJava中文版(第二版)-第4章类和接口/">Effective Java 中文版（第二版）第4章 类和接口</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/28/EffectiveJava中文版(第二版)-第5章泛型/">Effective Java 中文版（第二版）第5章 泛型</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/28/EffectiveJava中文版(第二版)-第6章枚举和注解/">Effective Java 中文版（第二版）第6章 枚举和注解</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/28/EffectiveJava中文版(第二版)-第7章方法/">Effective Java 中文版（第二版）第7章 方法</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 YuMing<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

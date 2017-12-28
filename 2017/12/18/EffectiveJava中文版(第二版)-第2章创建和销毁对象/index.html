@@ -7,16 +7,16 @@
   
   <title>Effective Java 中文版（第二版）第2章-创建和销毁对象 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Effective Java 中文版（第二版）第2章-创建和销毁对象第2章 创建和销毁对象2.1 考虑用静态工厂方法替代构造器静态工厂方法的格式形如： 123public static TypeX getInsane()&amp;#123;    return new TypeX();&amp;#125; 静态工厂方法的优点：  他们有名字，客户端代码更容易阅读； 不必在每次调用时都创建一个新对象； 可以返回原返">
+  <meta name="description" content="第2章 创建和销毁对象2.1 考虑用静态工厂方法替代构造器静态工厂方法的格式形如： 123public static TypeX getInsane()&amp;#123;    return new TypeX();&amp;#125; 静态工厂方法的优点：  他们有名字，客户端代码更容易阅读； 不必在每次调用时都创建一个新对象； 可以返回原返回类型的任何子类型的对象； 创检参数化实例的时候，代码更加简洁；">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Effective Java 中文版（第二版）第2章-创建和销毁对象">
-<meta property="og:url" content="http://yoursite.com/2017/12/18/Effective Java 中文版（第二版）第2章-创建和销毁对象/index.html">
+<meta property="og:url" content="http://yoursite.com/2017/12/18/EffectiveJava中文版(第二版)-第2章创建和销毁对象/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Effective Java 中文版（第二版）第2章-创建和销毁对象第2章 创建和销毁对象2.1 考虑用静态工厂方法替代构造器静态工厂方法的格式形如： 123public static TypeX getInsane()&amp;#123;    return new TypeX();&amp;#125; 静态工厂方法的优点：  他们有名字，客户端代码更容易阅读； 不必在每次调用时都创建一个新对象； 可以返回原返">
-<meta property="og:updated_time" content="2017-12-18T08:23:24.295Z">
+<meta property="og:description" content="第2章 创建和销毁对象2.1 考虑用静态工厂方法替代构造器静态工厂方法的格式形如： 123public static TypeX getInsane()&amp;#123;    return new TypeX();&amp;#125; 静态工厂方法的优点：  他们有名字，客户端代码更容易阅读； 不必在每次调用时都创建一个新对象； 可以返回原返回类型的任何子类型的对象； 创检参数化实例的时候，代码更加简洁；">
+<meta property="og:updated_time" content="2017-12-28T02:18:02.686Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Effective Java 中文版（第二版）第2章-创建和销毁对象">
-<meta name="twitter:description" content="Effective Java 中文版（第二版）第2章-创建和销毁对象第2章 创建和销毁对象2.1 考虑用静态工厂方法替代构造器静态工厂方法的格式形如： 123public static TypeX getInsane()&amp;#123;    return new TypeX();&amp;#125; 静态工厂方法的优点：  他们有名字，客户端代码更容易阅读； 不必在每次调用时都创建一个新对象； 可以返回原返">
+<meta name="twitter:description" content="第2章 创建和销毁对象2.1 考虑用静态工厂方法替代构造器静态工厂方法的格式形如： 123public static TypeX getInsane()&amp;#123;    return new TypeX();&amp;#125; 静态工厂方法的优点：  他们有名字，客户端代码更容易阅读； 不必在每次调用时都创建一个新对象； 可以返回原返回类型的任何子类型的对象； 创检参数化实例的时候，代码更加简洁；">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -52,9 +52,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -63,9 +63,9 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-Effective Java 中文版（第二版）第2章-创建和销毁对象" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-EffectiveJava中文版(第二版)-第2章创建和销毁对象" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/12/18/Effective Java 中文版（第二版）第2章-创建和销毁对象/" class="article-date">
+    <a href="/2017/12/18/EffectiveJava中文版(第二版)-第2章创建和销毁对象/" class="article-date">
   <time datetime="2017-12-18T03:38:10.185Z" itemprop="datePublished">2017-12-18</time>
 </a>
     
@@ -85,7 +85,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Effective-Java-中文版（第二版）第2章-创建和销毁对象"><a href="#Effective-Java-中文版（第二版）第2章-创建和销毁对象" class="headerlink" title="Effective Java 中文版（第二版）第2章-创建和销毁对象"></a>Effective Java 中文版（第二版）第2章-创建和销毁对象</h1><h2 id="第2章-创建和销毁对象"><a href="#第2章-创建和销毁对象" class="headerlink" title="第2章 创建和销毁对象"></a>第2章 创建和销毁对象</h2><h3 id="2-1-考虑用静态工厂方法替代构造器"><a href="#2-1-考虑用静态工厂方法替代构造器" class="headerlink" title="2.1 考虑用静态工厂方法替代构造器"></a>2.1 考虑用静态工厂方法替代构造器</h3><p>静态工厂方法的格式形如：</p>
+        <h2 id="第2章-创建和销毁对象"><a href="#第2章-创建和销毁对象" class="headerlink" title="第2章 创建和销毁对象"></a>第2章 创建和销毁对象</h2><h3 id="2-1-考虑用静态工厂方法替代构造器"><a href="#2-1-考虑用静态工厂方法替代构造器" class="headerlink" title="2.1 考虑用静态工厂方法替代构造器"></a>2.1 考虑用静态工厂方法替代构造器</h3><p>静态工厂方法的格式形如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public static TypeX getInsane()&#123;</span><br><span class="line">    return new TypeX();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>静态工厂方法的优点：</p>
 <ul>
@@ -129,7 +129,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/18/Effective Java 中文版（第二版）第2章-创建和销毁对象/" data-id="cjbbxoqpd00010ougw2v3oih1" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/12/18/EffectiveJava中文版(第二版)-第2章创建和销毁对象/" data-id="cjbpv71r900031gug78nnsv4o" class="article-share-link">Share</a>
       
       
     </footer>
@@ -139,7 +139,7 @@
 <nav id="article-nav">
   
     <a href="/2017/12/18/linux系统最大文件数ulimit修改方法/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Récent</strong>
+      <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
           linux系统最大文件数ulimit修改方法
@@ -149,7 +149,7 @@
   
   
     <a href="/2017/12/15/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Ancien</strong>
+      <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">Hello World</div>
     </a>
   
@@ -182,20 +182,28 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Articles récents</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         
           <li>
-            <a href="/2017/12/18/linux系统最大文件数ulimit修改方法/">linux系统最大文件数ulimit修改方法</a>
+            <a href="/2017/12/28/EffectiveJava中文版(第二版)-第11章序列化/">Effective Java 中文版（第二版）第11章 序列化</a>
           </li>
         
           <li>
-            <a href="/2017/12/18/Effective Java 中文版（第二版）第2章-创建和销毁对象/">Effective Java 中文版（第二版）第2章-创建和销毁对象</a>
+            <a href="/2017/12/28/EffectiveJava中文版(第二版)-第4章类和接口/">Effective Java 中文版（第二版）第4章 类和接口</a>
           </li>
         
           <li>
-            <a href="/2017/12/15/hello-world/">Hello World</a>
+            <a href="/2017/12/28/EffectiveJava中文版(第二版)-第5章泛型/">Effective Java 中文版（第二版）第5章 泛型</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/28/EffectiveJava中文版(第二版)-第6章枚举和注解/">Effective Java 中文版（第二版）第6章 枚举和注解</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/28/EffectiveJava中文版(第二版)-第7章方法/">Effective Java 中文版（第二版）第7章 方法</a>
           </li>
         
       </ul>
@@ -211,7 +219,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 YuMing<br>
-      Propulsé par <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>

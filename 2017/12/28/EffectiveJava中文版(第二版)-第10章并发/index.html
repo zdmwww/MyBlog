@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Effective Java 中文版（第二版）第10章 并发 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="第10章 并发10.1 同步访问共享的可变数据当多个线程共享可变对象的时候，每个读或者写数据的线程都必须同步。未能同步可能会导致活性失败和安全失败。 如果只需要交互通信而不需要互斥，volatile修饰符可以简单实现； 10.2 避免过度同步为了避免死锁和数据破坏，千万不要从同步区域中调用外部方法，要尽量限制同步区域内部的工作量。需要足够的理由才需要在类内部实现同步，并配备文档说明。 10.3 e">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Effective Java 中文版（第二版）第10章 并发">
+<meta property="og:url" content="http://yoursite.com/2017/12/28/EffectiveJava中文版(第二版)-第10章并发/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="第10章 并发10.1 同步访问共享的可变数据当多个线程共享可变对象的时候，每个读或者写数据的线程都必须同步。未能同步可能会导致活性失败和安全失败。 如果只需要交互通信而不需要互斥，volatile修饰符可以简单实现； 10.2 避免过度同步为了避免死锁和数据破坏，千万不要从同步区域中调用外部方法，要尽量限制同步区域内部的工作量。需要足够的理由才需要在类内部实现同步，并配备文档说明。 10.3 e">
+<meta property="og:updated_time" content="2017-12-28T02:13:24.592Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Effective Java 中文版（第二版）第10章 并发">
+<meta name="twitter:description" content="第10章 并发10.1 同步访问共享的可变数据当多个线程共享可变对象的时候，每个读或者写数据的线程都必须同步。未能同步可能会导致活性失败和安全失败。 如果只需要交互通信而不需要互斥，volatile修饰符可以简单实现； 10.2 避免过度同步为了避免死锁和数据破坏，千万不要从同步区域中调用外部方法，要尽量限制同步区域内部的工作量。需要足够的理由才需要在类内部实现同步，并配备文档说明。 10.3 e">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-EffectiveJava中文版(第二版)-第10章并发" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/28/EffectiveJava中文版(第二版)-第10章并发/" class="article-date">
+  <time datetime="2017-12-28T02:01:50.209Z" itemprop="datePublished">2017-12-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Effective Java 中文版（第二版）第10章 并发
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="第10章-并发"><a href="#第10章-并发" class="headerlink" title="第10章 并发"></a>第10章 并发</h2><h3 id="10-1-同步访问共享的可变数据"><a href="#10-1-同步访问共享的可变数据" class="headerlink" title="10.1 同步访问共享的可变数据"></a>10.1 同步访问共享的可变数据</h3><p>当多个线程共享可变对象的时候，每个读或者写数据的线程都必须同步。未能同步可能会导致活性失败和安全失败。</p>
+<p>如果只需要交互通信而不需要互斥，volatile修饰符可以简单实现；</p>
+<h3 id="10-2-避免过度同步"><a href="#10-2-避免过度同步" class="headerlink" title="10.2 避免过度同步"></a>10.2 避免过度同步</h3><p>为了避免死锁和数据破坏，千万不要从同步区域中调用外部方法，要尽量限制同步区域内部的工作量。需要足够的理由才需要在类内部实现同步，并配备文档说明。</p>
+<h3 id="10-3-excutor和task优先于线程"><a href="#10-3-excutor和task优先于线程" class="headerlink" title="10.3 excutor和task优先于线程"></a>10.3 excutor和task优先于线程</h3><h3 id="10-4-并发工具优于wait和notify"><a href="#10-4-并发工具优于wait和notify" class="headerlink" title="10.4 并发工具优于wait和notify"></a>10.4 并发工具优于wait和notify</h3><p>始终应该用wait循环模式来调用wait方法，永远不要在循环之外调用wait方法。循环会在等待之前和的等待之后测试条件.<br>wait循环模式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">synchronized(obj)&#123;</span><br><span class="line">    while(&lt;condition does not hold&gt;)&#123;</span><br><span class="line">        obj.wait(); //Releads lock, and reacquires on wakeup</span><br><span class="line">        ... //Perform action appropriate to condition</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>应该优先使用notifyAll，而不是使用notify。notifyAll唤醒所有的线程，线程中需要自己判断唤醒条件的满足，从而确保不会导致错误的唤醒。</p>
+<h3 id="10-5-线程安全性的文档化"><a href="#10-5-线程安全性的文档化" class="headerlink" title="10.5 线程安全性的文档化"></a>10.5 线程安全性的文档化</h3><p>线程安全级别包含以下几种：</p>
+<ul>
+<li>不可变的；</li>
+<li>无条件的线程安全-实力可变，足够的内部同步；</li>
+<li>有条件的线程安全，比如Collections.synchronized包装返回的集合；</li>
+<li>非线程安全-依赖于外部同步；</li>
+<li>线程对立的-很少见，不能被多线程调用；</li>
+</ul>
+<h3 id="10-6-慎用延迟初始化"><a href="#10-6-慎用延迟初始化" class="headerlink" title="10.6 慎用延迟初始化"></a>10.6 慎用延迟初始化</h3><p>正常的初始化要优先于延迟初始化。如果用延迟初始化来破坏初始化的循环，就要使用同步方法。</p>
+<p>慎用延迟初始化，必要的时候，对于实例域，可以使用volatile和双重检查模式；对于静态域，就使用lazy initailization holder class模式。对于可以接收重复初始化的实例域，也可以考虑volatile加单重检查模式。</p>
+<p>lazy initailization holder class模式是指：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">private static class FiledHolder&#123;</span><br><span class="line">    static final FiledType filed= computeFiledValue();</span><br><span class="line">    static filedType getField()&#123;</span><br><span class="line">        return FiledHolder.field;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>双重检查模式:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">private volatile FieldType field;</span><br><span class="line">FiledType getField()&#123;</span><br><span class="line">    FiledType result=field;</span><br><span class="line">    if(result==null)&#123;  //first check(no locking)</span><br><span class="line">        synchornized(this)&#123;</span><br><span class="line">            result=field;</span><br><span class="line">            if(result==null)&#123; second check(with locking)</span><br><span class="line">                filed=result=computeFieldValue();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return reuslt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>单重检查模式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">private volatile FieldType field;</span><br><span class="line">FiledType getField()&#123;</span><br><span class="line">    FiledType result=field;</span><br><span class="line">    if(result==null)&#123;</span><br><span class="line">        filed=result=computeFieldValue();</span><br><span class="line">    &#125;</span><br><span class="line">    return reuslt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="10-7-不要依赖于线程调度器"><a href="#10-7-不要依赖于线程调度器" class="headerlink" title="10.7 不要依赖于线程调度器"></a>10.7 不要依赖于线程调度器</h3><p>程序运行的正确性不要依赖于线程调度器，否则会影响健壮性和可移植性。也不要依赖于Thread.yield和线程优先级。</p>
+<h3 id="10-8-避免使用线程组"><a href="#10-8-避免使用线程组" class="headerlink" title="10.8 避免使用线程组"></a>10.8 避免使用线程组</h3><p>线程组已经是一个被淘汰的技术。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/12/28/EffectiveJava中文版(第二版)-第10章并发/" data-id="cjbpv71p300001gug48w39ll4" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/12/28/EffectiveJava中文版(第二版)-第9章异常/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Effective Java 中文版（第二版）第9章 异常
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/12/28/EffectiveJava中文版(第二版)-第3章对于所有对象通用的方法/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Effective Java 中文版（第二版）第3章 对于所有对象通用的方法</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/12/28/EffectiveJava中文版(第二版)-第11章序列化/">Effective Java 中文版（第二版）第11章 序列化</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/28/EffectiveJava中文版(第二版)-第4章类和接口/">Effective Java 中文版（第二版）第4章 类和接口</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/28/EffectiveJava中文版(第二版)-第5章泛型/">Effective Java 中文版（第二版）第5章 泛型</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/28/EffectiveJava中文版(第二版)-第6章枚举和注解/">Effective Java 中文版（第二版）第6章 枚举和注解</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/28/EffectiveJava中文版(第二版)-第7章方法/">Effective Java 中文版（第二版）第7章 方法</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 YuMing<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
